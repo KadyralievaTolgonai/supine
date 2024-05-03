@@ -29,7 +29,7 @@ class PostViewSet(ModelViewSet):
         if self.action in ['list','retrieve']:
             self.permission_classes=[AllowAny]
         elif self.action in ['create']:
-            self.permission_classes=[IsOwnerOrReadOnly]
+            self.permission_classes=[IsAuthenticated]
         elif self.action in ['update','partial_update','destroy']:
             self.permission_classes=[IsOwnerOrReadOnly]
         return [permission() for permission in self.permission_classes]
@@ -38,5 +38,7 @@ class PostViewSet(ModelViewSet):
         if self.action=='list':
             return PostListSerializer
         return self.serializer_class
+        
     def get_serializer_context(self):
         return {'request':self.request}
+

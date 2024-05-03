@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 from decouple import config
 
+from typing import Any,Dict
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
@@ -33,6 +35,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,14 +44,18 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # libs
     'rest_framework',
+   
     # 'rest_framework_simplejwt',
     'rest_framework_simplejwt',
     'django_filters',
     'drf_yasg',
+    # 'python_decouple',
+    # 'django-jazzmin',
     
     # apps
     'account',
-    'posts'
+    'posts',
+    'review'
 ]
 
 MIDDLEWARE = [
@@ -181,3 +188,42 @@ SWAGGER_SETTINGS = {
         }
     }
 }
+
+
+
+
+
+JAZZMIN_SETTINGS: Dict[str, Any] = {
+    # title of the window (Will default to current_admin_site.site_title if absent or None)
+    "site_title": "py33",
+    # Title on the brand, and login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
+    "site_header": "py33",
+    "site_brand":"py33",
+   "topmenu_links": [
+
+        # Url that gets reversed (Permissions can be added)
+        {"name": "Home",  "url": "admin:index", "permissions": ["auth.view_user"]},
+
+        # external url that opens in a new window (Permissions can be added)
+        {"name": "Support", "url": "https://github.com/6Katana9", "new_window": True},
+
+        # model admin to link to (Permissions checked against model)
+        {"model": "auth.User"},
+
+        # App with dropdown menu to all its models pages (Permissions checked against models)
+        {"app": "books"},
+    ],
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

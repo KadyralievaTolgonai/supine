@@ -15,6 +15,7 @@ pillow = "^10.3.0"
 django-filter = "^24.2"
 drf-yasg = "^1.21.7"
 setuptools = "^69.5.1"
+django-jazzmin = "^3.0.0"
 
 
 [build-system]

@@ -7,3 +7,6 @@ Pillow
 django-filter
 
 drf-yasg
+
+django-jazzmin
+
